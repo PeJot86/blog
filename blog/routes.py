@@ -92,3 +92,12 @@ def delete_entry(entry_id):
    db.session.delete(entry)
    db.session.commit()
    return render_template("delete.html", entry=entry)
+
+
+@app.route('/search')
+def search():
+    query = request.args.get('search')
+    # req_search = Entry.query.filter_by(title = query)  
+    req_search = Entry.query.filter(Entry.title.like(f'%{query}%'))
+    return render_template('search.html', req_search=req_search)
+

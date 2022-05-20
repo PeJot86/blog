@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+</br>
 <table class="table">
    <thead>
-     <tr>
+     <tr class="text-secondary">
        <th scope="col">Data</th>
        <th scope="col">Tytuł</th>
        <th scope="col">Treść</th>
@@ -13,18 +13,18 @@
    </thead>
    <tbody>
        {% for post in drafts %}
-     <tr>
-       <td>
+     </br>
+       <tr>
+       <td class="text-secondary">
            {{ post.pub_date.strftime('%Y-%m-%d') }}
-       </td>
        <td>
-           <a href="{{ url_for('edit_entry', entry_id=post.id) }}">
+           <a class="text-secondary" href="{{ url_for('edit_entry', entry_id=post.id) }}">
                {{ post.title }}
            </a>
        </td>
-       <td>{{ post.body|truncate(100, true) }}
+       <td class="text-secondary">{{ post.body|truncate(100, true) }}
       </td>
-       <td><a class="btn btn-danger" href="{{ url_for('delete_entry', entry_id=post.id) }}">Usuń </a></td>
+       <td><a class="btn btn-info" href="{{ url_for('delete_entry', entry_id=post.id) }}">Usuń </a></td>
       </tr>
      {% endfor %}
      

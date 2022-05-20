@@ -2,7 +2,7 @@ from blog.models import Entry, db
 from faker import Faker
 
 def generate_entries(how_many=10):
-   fake = Faker()
+   fake = Faker('pl_PL')
 
    for i in range(how_many):
        post = Entry(

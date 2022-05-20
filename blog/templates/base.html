@@ -5,7 +5,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <meta name="description" content="">
- <title>Mój pierwszy blog</title>
+ <title>Mój blog o niczym</title>
 
  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -20,42 +20,55 @@
  </style>
 </head>
 
-<body style="background-color: white">
-  
+<body style="background-color: black">
+
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-   <a class="btn btn-secondary my-2 my-lg-0" href={{url_for('index')}}>Strona główna</a>&nbsp;
-   <a class="btn btn-secondary my-2 my-lg-0" href={{url_for('create_entry')}}>Nowy wpis</a>&nbsp;
-   <a class="btn btn-secondary my-2 my-lg-0" href={{url_for('list_drafts')}}>Kopie robocze</a>
+   <a class="btn btn-info mt-5 my-2 my-lg-0" href={{url_for('index')}}>Strona główna</a>&nbsp;
+   <a class="btn btn-info my-2 my-lg-0" href={{url_for('create_entry')}}>Nowy wpis</a>&nbsp;
+   <a class="btn btn-info my-2 my-lg-0" href={{url_for('list_drafts')}}>Kopie robocze</a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
    </button>&nbsp;
-    </form>
+   </form>
    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-    </ul>
+    <ul class="navbar-nav mr-auto"></ul>
+
     {% if session.logged_in %}
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Szukaj" aria-label="Szukaj">
-     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}">
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
+     <button class="btn btn-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
     </form>
      <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Wyloguj</button>
+        <button class="btn btn-info my-2 my-sm-0" type="submit">Wyloguj</button>
       </form>
     {% else %}
-      <a href="{{ url_for('login') }}" class="btn btn-secondary my-2 my-lg-0">Zaloguj</a>
+      <a href="{{ url_for('login') }}" class="btn btn-info my-2 my-lg-0">Zaloguj</a>
     {% endif %}
-  </div>
 </nav>
-<div><img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid" alt="Responsive image"> </div>
+<img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid" alt="Responsive image">
 
-
-<main role="main" class="container">
-   
-
+<main role="main" class="container text-secondary text-justify">
+</br>
+<div class="card text-white bg-dark mb-3"></div>
+<div class="card-body">
+ <h5>Bezsensowne posty? Co za bzdury na tym blogu! </h5>
+ <p>Wszystkie posty na tym blogu zostały wygenerowane przez bibliotekę o nazwie Faker. Faker tworzy fałszywe dane do testów. Dzięki niemu można też wypełnić swojego bloga bezsensownymi postami, których nie polecam czytać ;) Jeżeli masz ochotę przetestować funkcjonalność tego bloga zaloguj się i napisz posta. Użytkownik i hasło to: admin. Pozdrawiam Przemek.</p></div>
+</div>
    {% block content %}
   
    {% endblock %}
+  </div>
+</main>
+  <footer class="mastfoot mt-auto">
+    <footer class="text-center">
+  </br>
+</br>
+    <div class="inner text-secondary">
+      <p>Created by Przemysław Jarocki <a href="mailto:przemek.jarocki@gmail.com">@</a> with <a href="https://getbootstrap.com/">Bootstrap</a></div></p>
+    </div>
+  </footer>
+</div>
 
  </main><!-- /.container -->
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -68,4 +81,6 @@
    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
    crossorigin="anonymous"></script>
 
-</html>
+
+
+   </html>
