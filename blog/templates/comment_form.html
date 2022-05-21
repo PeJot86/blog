@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+</br>
+<h3 class="text-secondary">
+   Komentuj
+</h3>
+
+<form action="" method="POST">
+   {{form.hidden_tag()}}
+   
+    <div class="form-group text-secondary">
+        <label for="body">Treść</label>
+        {{ form.body(class_="form-control p-3 mb-2 bg-dark text-white", cols="100", rows="5") }}
+    </div>
+    <div class="form-check">
+      {{ form.is_published(class_="form-check-input") }}
+         <label class="form-check-label text-secondary" for="is_published">Opublikować?</label>
+     </div>
+ </br>
+    <button type="submit" class="btn btn-info my-2 my-lg-0">Zapisz</button>
+ </form>
+ </br>
+
+{% endblock %}

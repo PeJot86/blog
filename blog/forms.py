@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, BooleanField, PasswordField
+from wtforms import StringField, TextAreaField, BooleanField, PasswordField, IntegerField
 from wtforms.validators import DataRequired
 from werkzeug.routing import ValidationError
 from config import Config
@@ -11,8 +11,12 @@ class EntryForm(FlaskForm):
    is_published = BooleanField('Is Published?')
 
 
-class LoginForm(FlaskForm):
+class CommentForm(FlaskForm):
+   body = TextAreaField('Content', validators=[DataRequired()])
+   is_published = BooleanField('Is Published?')  
 
+
+class LoginForm(FlaskForm):
    username = StringField('Username', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
 

@@ -2,49 +2,49 @@
 <html lang="en">
 
 <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- <meta name="description" content="">
- <title>Mój blog o niczym</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<title>Mój blog o niczym</title>
 
- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
- <!-- Bootstrap core CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
- <style>
-   body {
-     padding-top: 5rem;
-   }
- </style>
+<style>
+body {
+padding-top: 5rem;
+}
+</style>
 </head>
 
 <body style="background-color: black">
 
- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-   <a class="btn btn-info mt-5 my-2 my-lg-0" href={{url_for('index')}}>Strona główna</a>&nbsp;
-   <a class="btn btn-info my-2 my-lg-0" href={{url_for('create_entry')}}>Nowy wpis</a>&nbsp;
-   <a class="btn btn-info my-2 my-lg-0" href={{url_for('list_drafts')}}>Kopie robocze</a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-   </button>&nbsp;
-   </form>
-   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto"></ul>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<a class="btn btn-outline-info mt-5 my-2 my-lg-0" href={{url_for('index')}}>Strona główna</a>&nbsp;
+<a class="btn btn-outline-info my-2 my-lg-0" href={{url_for('create_entry')}}>Nowy wpis</a>&nbsp;
+<a class="btn btn-outline-info my-2 my-lg-0" href={{url_for('list_drafts')}}>Kopie robocze</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>&nbsp;
+</form>
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<ul class="navbar-nav mr-auto"></ul>
 
-    {% if session.logged_in %}
-    <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}">
-      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
-     <button class="btn btn-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
-    </form>
-     <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
-        <button class="btn btn-info my-2 my-sm-0" type="submit">Wyloguj</button>
-      </form>
-    {% else %}
-      <a href="{{ url_for('login') }}" class="btn btn-info my-2 my-lg-0">Zaloguj</a>
-    {% endif %}
+{% if session.logged_in %}
+<form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}">
+<input class="form-control mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
+<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
+</form>
+<form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
+  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Wyloguj</button>
+</form>
+{% else %}
+<a href="{{ url_for('login') }}" class="btn btn-outline-info my-2 my-lg-0">Zaloguj</a>
+{% endif %}
 </nav>
 <img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid" alt="Responsive image">
 
@@ -52,35 +52,33 @@
 </br>
 <div class="card text-white bg-dark mb-3"></div>
 <div class="card-body">
- <h5>Bezsensowne posty? Co za bzdury na tym blogu! </h5>
- <p>Wszystkie posty na tym blogu zostały wygenerowane przez bibliotekę o nazwie Faker. Faker tworzy fałszywe dane do testów. Dzięki niemu można też wypełnić swojego bloga bezsensownymi postami, których nie polecam czytać ;) Jeżeli masz ochotę przetestować funkcjonalność tego bloga zaloguj się i napisz posta. Użytkownik i hasło to: admin. Pozdrawiam Przemek.</p></div>
+<h5>Bezsensowne posty? Co za bzdury na tym blogu! </h5>
+<p>Wszystkie posty na tym blogu zostały wygenerowane przez bibliotekę o nazwie Faker. Faker tworzy fałszywe dane do testów. Dzięki niemu można też wypełnić swojego bloga bezsensownymi postami, których nie polecam czytać ;) Jeżeli masz ochotę przetestować funkcjonalność tego bloga zaloguj się i napisz posta. Użytkownik i hasło to: admin. A pod <a href="https://github.com/PeJot86/blog">tym linkiem</a> możesz podejrzeć kod mojego bloga. Pozdrawiam Przemek.</p></div>
 </div>
-   {% block content %}
-  
-   {% endblock %}
-  </div>
+{% block content %}
+
+{% endblock %}
+</div>
 </main>
-  <footer class="mastfoot mt-auto">
-    <footer class="text-center">
-  </br>
+<footer class="mastfoot mt-auto">
+<footer class="text-center">
 </br>
-    <div class="inner text-secondary">
-      <p>Created by Przemysław Jarocki <a href="mailto:przemek.jarocki@gmail.com">@</a> with <a href="https://getbootstrap.com/">Bootstrap</a></div></p>
-    </div>
-  </footer>
+</br>
+<div class="inner text-secondary">
+<p>Created by Przemysław Jarocki <a href="mailto:przemek.jarocki@gmail.com">@</a> with <a href="https://getbootstrap.com/">Bootstrap</a></div></p>
+</div>
+</footer>
 </div>
 
- </main><!-- /.container -->
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-   crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-   crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-   integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-   crossorigin="anonymous"></script>
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+crossorigin="anonymous"></script>
 
-
-
-   </html>
+</html>
