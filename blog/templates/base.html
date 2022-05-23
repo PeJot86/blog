@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <title>Mój blog o niczym</title>
 
@@ -15,36 +15,47 @@ integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7
 
 <style>
 body {
-padding-top: 10rem;
+padding-top: 3rem;
 }
 </style>
 </head>
 
 <body style="background-color: black">
-<img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid fixed-top" alt="Responsive image">
-<nav class="navbar navbar-expand-md fixed-top">
-<a class="btn btn-info mt-5 my-2 my-lg-0" href={{url_for('index')}}>Strona główna</a>&nbsp;
-<a class="btn btn-info my-2 my-lg-0" href={{url_for('create_entry')}}>Nowy wpis</a>&nbsp;
-<a class="btn btn-info my-2 my-lg-0" href={{url_for('list_drafts')}}>Kopie robocze</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid " alt="Responsive image">
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+<div class="container-fluid">   
+<div class="pos-f-t">
+<div class="collapse" id="navbarToggleExternalContent">
+<div class="bg-dark p-4">
+<h4 class="text-secondary">Menu</h4>
+<a href={{ url_for('login')}} class="nav-item nav-link">Logowanie</a>
+<a href={{url_for('index')}} class="nav-item nav-link active">Strona główna</a>
+<a href={{url_for('create_entry')}} class="nav-item nav-link">Nowy wpis</a>
+<a href={{url_for('list_drafts')}} class="nav-item nav-link">Kopie robocze</a>
+</div>
+</div>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
-</button>&nbsp;
-</form>
-<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-<ul class="navbar-nav mr-auto"></ul>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+<div class="navbar-nav mr-auto mt-2 mt-lg-0">
+<a href={{url_for('index')}} class="btn btn-outline-info">Strona główna</a>&nbsp;
+<a href={{url_for('create_entry')}} class="btn btn-outline-info">Nowy wpis</a>&nbsp;
+<a href={{url_for('list_drafts')}} class="btn btn-outline-info">Kopie robocze</a>&nbsp;
 
 {% if session.logged_in %}
 <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}">
-<input class="form-control mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
-<button class="btn btn-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
+<input class="form-control bg-dark text-white mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
+<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
 </form>
 <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
-<button class="btn btn-info my-2 my-sm-0" type="submit">Wyloguj</button>
+<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Wyloguj</button>
 </form>
 {% else %}
-<a href="{{ url_for('login') }}" class="btn btn-info my-2 my-lg-0">Zaloguj</a>
+<a href="{{ url_for('login') }}" class="btn btn-outline-info my-2 my-lg-0">Zaloguj</a>
 {% endif %}
+</nav>
 </nav>
 
 <main role="main" class="container text-secondary text-justify">
