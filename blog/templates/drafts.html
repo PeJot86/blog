@@ -3,36 +3,36 @@
 {% block content %}
 </br>
 <table class="table">
-   <thead>
-     <tr class="text-secondary">
-       <th scope="col">Data</th>
-       <th scope="col">Tytuł</th>
-       <th scope="col">Treść</th>
-       <th scope="col"></th>
-     </tr>
-   </thead>
-   <tbody>
-       {% for post in drafts %}
-     </br>
-       <tr>
-       <td class="text-secondary">
-           {{ post.pub_date.strftime('%Y-%m-%d') }}
-       <td>
-           <a class="text-secondary" href="{{ url_for('edit_entry', entry_id=post.id) }}">
-               {{ post.title }}
-           </a>
-       </td>
-       <td class="text-secondary">{{ post.body|truncate(100, true) }}
-      </td>
-       <td><a class="btn btn-info" href="{{ url_for('delete_entry', entry_id=post.id) }}">Usuń </a></td>
-      </tr>
-     {% endfor %}
-     
-    </tbody>
- </table>
+<thead>
+<tr class="text-secondary">
+<th scope="col">Data</th>
+<th scope="col">Tytuł</th>
+<th scope="col">Treść</th>
+<th scope="col"></th>
+</tr>
+</thead>
+<tbody>
+{% for post in drafts %}
+</br>
+<tr>
+<td class="text-secondary">
+{{ post.pub_date.strftime('%Y-%m-%d') }}
+<td>
+<a class="text-secondary" href="{{ url_for('edit_entry', entry_id=post.id) }}">
+{{ post.title }}
+</a>
+</td>
+<td class="text-secondary">{{ post.body|truncate(100, true) }}
+</td>
+<td><a class="btn btn-outline-info" href="{{ url_for('delete_entry', entry_id=post.id) }}">Usuń </a></td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
 
 {% endblock %}
-          
+
 
 
 

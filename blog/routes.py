@@ -16,9 +16,8 @@ def login_required(view_func):
 
 @app.route("/")
 def index():
-   all_posts = Entry.query.filter_by(is_published=True).order_by(Entry.pub_date.desc())
-   all_coments = Comment.query.filter_by(is_published=True).order_by(Comment.entry_id)
-   return render_template("homepage.html", all_posts=all_posts, all_coments = all_coments)
+    posts = Entry.query.filter_by(is_published=True).order_by(Entry.pub_date.desc()).all()
+    return render_template("homepage.html", posts = posts)
 
 
 @app.route("/new-post/", methods=["GET", "POST"])
@@ -37,6 +36,7 @@ def create_entry():
            db.session.commit()
        else:
            errors = form.errors
+       return redirect(url_for('index'))
    return render_template("entry_form.html", form=form, errors=errors)
 
 
@@ -52,6 +52,7 @@ def edit_entry(entry_id):
            db.session.commit()
        else:
            errors = form.errors
+       return redirect(url_for('index'))
    return render_template("entry_form.html", form=form, errors=errors)
 
 
@@ -105,8 +106,7 @@ def search():
 @app.route("/add-comment/<int:entry_id>", methods=["GET", "POST"])
 @login_required
 def comment(entry_id):
-   post_id = str(Entry.query.filter_by(id=entry_id).first_or_404())
-   post_id=post_id.replace("Entry", "")
+   entry = Entry.query.filter_by(id=entry_id).first_or_404()
    form = CommentForm()
    errors = None
    if request.method == 'POST':
@@ -114,11 +114,12 @@ def comment(entry_id):
            entry = Comment(
                body=form.body.data,
                is_published=form.is_published.data,
-               entry_id = post_id
+               entry_id = entry.id
            )
            db.session.add(entry)
            db.session.commit()
        else:
            errors = form.errors
+       return redirect(url_for('index'))
    return render_template("comment_form.html", form=form, errors=errors)
 

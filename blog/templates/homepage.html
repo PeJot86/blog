@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% for post in all_posts %}
+{% for post in posts %}
 
 <br/>
 <div class="card text-white bg-dark mb-3"></div>
@@ -28,11 +28,13 @@
 <a href="{{ url_for('comment', entry_id=post.id) }}" class="card-link">Komentuj</a>
 </div>
 </div>
+{% for comment in post.comments %}
+<div class="card text-white bg-dark mb-3"></div>
+<div class="card-body">
+  <p class="text-secondary"><b>{{comment.created.strftime("%Y-%m-%d, %H:%M:%S%z")}}</b></p>
+<p class="text-secondary">{{comment.body}}</p>
+</div>
 </div>
 {% endfor %}
-{% for comment in all_comments %}
-{% if comment.entry_id == post.id%}
-<div><p class="text-secondary">{{ all_comments.body}}</p></div> 
-{% endif %}
 {% endfor %}
 {% endblock %}
