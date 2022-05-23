@@ -1,12 +1,12 @@
+
 {% extends "base.html" %}
 
 {% block content %}
-</br>
-<div class="form-group text-secondary">
+
 <h3>
 Zaloguj się
 </h3>
-</div>
+
 {% if errors %}
 {{ errors.username }}
 {% endif %}
@@ -15,9 +15,9 @@ Zaloguj się
 <div class="form-group text-secondary">
 <label for="title">Login</label>
 {% if errors and errors.username %}
-{{ form.username(class_="form-control is-invalid ") }}
+{{ form.username(class_="form-control is-invalid") }}
 {% else %}
-{{ form.username(class_="form-control p-3 mb-2 bg-dark text-white") }}
+{{ form.username(class_="form-control bg-dark text-white") }}
 {% endif %}
 <div class="invalid-feedback">{{ errors.username|join(' ') }}</div>
 
@@ -28,12 +28,12 @@ Zaloguj się
 {% if errors and errors.password %}
 {{ form.password(class_="form-control is-invalid") }}
 {% else %}
-{{ form.password(class_="form-control  p-3 mb-2 bg-dark text-white ") }}
+{{ form.password(class_="form-control bg-dark text-white") }}
 {% endif %}
 <div class="invalid-feedback">{{ errors.password|join(' ') }}</div>
 
 </div>
-<a type="submit" class="btn btn-outline-info mt-5">Zaloguj</button>
+<button type="submit" class="btn btn-info mt-5">Zaloguj</button>
 </form>
-
+</div>
 {% endblock %}
