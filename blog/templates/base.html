@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<title>Mój blog o niczym</title>
+<title>Blog example</title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -21,7 +21,6 @@ padding-top: 3rem;
 </head>
 
 <body style="background-color: black">
-<img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid " alt="Responsive image">
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 <div class="container-fluid">   
@@ -35,35 +34,43 @@ padding-top: 3rem;
 <a href={{url_for('list_drafts')}} class="nav-item nav-link">Kopie robocze</a>
 </div>
 </div>
+</div>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
-<div class="navbar-nav mr-auto mt-2 mt-lg-0">
-<a href={{url_for('index')}} class="btn btn-outline-info">Strona główna</a>&nbsp;
-<a href={{url_for('create_entry')}} class="btn btn-outline-info">Nowy wpis</a>&nbsp;
-<a href={{url_for('list_drafts')}} class="btn btn-outline-info">Kopie robocze</a>&nbsp;
+<div class="navbar-nav mt-2 mt-lg-0">
+<a href={{url_for('index')}} class="btn btn-dark my-2 my-sm-0">Strona główna</a>
+<a href={{url_for('create_entry')}} class="btn btn-dark my-2 my-sm-0">Nowy wpis</a>&nbsp;
+<a href={{url_for('list_drafts')}} class="btn btn-dark my-2 my-sm-0">Kopie robocze</a>&nbsp;
+</div>
+<div class="collapse navbar-collapse" id="navbarsExampleDefault"></div>
 
 {% if session.logged_in %}
+
 <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}">
-<input class="form-control bg-dark text-white mr-sm-2" name="search" type="search" placeholder="Szukaj posta">
-<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Szukaj</button>&nbsp;
+<input class="form-control bg-dark text-white my-2 my-lg-0" name="search" type="search" placeholder="Szukaj postów">&nbsp;
+<button class="btn btn-outline-info my-2 my-lg-0" type="submit">Szukaj</button>&nbsp;
 </form>
 <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
-<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Wyloguj</button>
+<button class="btn btn-outline-info my-2 my-lg-0" type="submit">Wyloguj</button>
 </form>
 {% else %}
-<a href="{{ url_for('login') }}" class="btn btn-outline-info my-2 my-lg-0">Zaloguj</a>
+<form class="form-inline my-2 my-lg-0" action="{{ url_for('login') }}" method="POST">
+    <button class="btn btn-outline-info my-2 my-lg-0" type="submit">Zaloguj</button>
+    </form>
 {% endif %}
-</nav>
 </nav>
 
 <main role="main" class="container text-secondary text-justify">
 </br>
+<img src="{{url_for('static', filename='poster.jpg')}}" class="img-fluid img-thumbnail border-dark bg-dark" alt="Responsive image">
+</br>
+</br>
 <div class="card text-white bg-dark mb-3"></div>
 <div class="card-body">
 <h5>Bezsensowne posty? Co za bzdury na tym blogu! </h5>
-<p>Wszystkie posty na tym blogu zostały wygenerowane przez bibliotekę o nazwie Faker. Faker tworzy fałszywe dane do testów. Dzięki niemu można też wypełnić swojego bloga bezsensownymi postami, których nie polecam czytać ;) Jeżeli masz ochotę przetestować funkcjonalność tego bloga zaloguj się i napisz posta. Użytkownik i hasło to: admin. A pod <a href="https://github.com/PeJot86/blog">tym linkiem</a> możesz podejrzeć kod mojego bloga. Pozdrawiam Przemek.</p></div>
+<p>Wszystkie posty na tym blogu zostały wygenerowane przez bibliotekę o nazwie Faker. Faker tworzy fałszywe dane do testów. Dzięki niemu można też wypełnić swojego bloga bezsensownymi postami, których nie polecam czytać ;) Jeżeli masz ochotę przetestować funkcjonalność tego bloga zaloguj się. Użytkownik i hasło to: admin. A pod <a href="https://github.com/PeJot86/blog">tym linkiem</a> możesz podejrzeć kod mojego bloga. Pozdrawiam Przemek.</p></div>
 </div>
 {% block content %}
 {% endblock %}

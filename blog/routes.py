@@ -123,3 +123,12 @@ def comment(entry_id):
        return redirect(url_for('index'))
    return render_template("comment_form.html", form=form, errors=errors)
 
+
+@app.route("/delete-comment/<int:entry_id>", methods=["GET", "POST"])
+@login_required
+def delete_comment(entry_id):
+   entry = Comment.query.get(entry_id)
+   db.session.delete(entry)
+   db.session.commit()
+   return render_template("delete.html", entry=entry)
+
